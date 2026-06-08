@@ -1,17 +1,5 @@
-import { useTranslation } from "react-i18next";
-import { Text, View } from "react-native";
+import { Redirect } from "expo-router";
 
 export default function Index() {
-  const { t } = useTranslation();
-  return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>{t("welcome")}</Text>
-    </View>
-  );
+  return <Redirect href="/(auth)/sign-in" />;
 }
