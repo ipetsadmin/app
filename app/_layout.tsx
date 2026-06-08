@@ -1,6 +1,11 @@
+import { AuthProvider } from "@/src/providers/auth-provider";
 import { Stack } from "expo-router";
-import "@/src/shared/libs/i18n";
+import "@/src/libs/i18n";
 
 export default function RootLayout() {
-  return <Stack screenOptions={{ headerShown: false }} />;
+  return (
+    <AuthProvider>
+      <Stack screenOptions={{ headerShown: false }} />
+    </AuthProvider>
+  );
 }
