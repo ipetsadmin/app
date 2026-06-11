@@ -1,14 +1,8 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useState } from "react";
-import {
-  StyleSheet,
-  TextInput,
-  type TextInputProps,
-  TouchableOpacity,
-  useColorScheme,
-  View,
-} from "react-native";
+import { StyleSheet, TextInput, type TextInputProps, TouchableOpacity, View } from "react-native";
 import { Colors } from "@/src/constants/colors";
+import { useTheme } from "@/src/contexts/theme-context";
 import { ThemedText } from "./ThemedText";
 
 type IoniconName = React.ComponentProps<typeof Ionicons>["name"];
@@ -17,6 +11,7 @@ export type TextFieldProps = TextInputProps & {
   label?: string;
   index?: number;
   leftIcon?: IoniconName;
+  error?: string;
 };
 
 export function TextField({
@@ -24,11 +19,12 @@ export function TextField({
   index,
   leftIcon,
   secureTextEntry,
+  error,
   style,
   ...rest
 }: TextFieldProps) {
-  const colorScheme = useColorScheme() ?? "light";
-  const colors = Colors[colorScheme];
+  const { theme } = useTheme();
+  const colors = Colors[theme];
   const [hidden, setHidden] = useState(secureTextEntry ?? false);
 
   const hasLabel = label != null || index != null;
@@ -81,6 +77,11 @@ export function TextField({
           </TouchableOpacity>
         )}
       </View>
+      {error && (
+        <ThemedText style={styles.error} lightColor="#E53E3E" darkColor="#FC8181">
+          {error}
+        </ThemedText>
+      )}
     </View>
   );
 }
@@ -117,5 +118,9 @@ const styles = StyleSheet.create({
   rightIcon: {
     marginLeft: 12,
     padding: 4,
+  },
+  error: {
+    fontSize: 12,
+    paddingHorizontal: 4,
   },
 });

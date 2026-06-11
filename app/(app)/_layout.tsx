@@ -1,9 +1,9 @@
 import { Tabs } from "expo-router";
-import { useColorScheme } from "react-native";
+import { useTheme } from "@/src/contexts/theme-context";
 import { Colors } from "@/src/constants/colors";
 
 export default function AppLayout() {
-  const colorScheme = useColorScheme() ?? "light";
+  const { theme: colorScheme } = useTheme();
 
   return (
     <Tabs
