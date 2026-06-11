@@ -1,13 +1,14 @@
 import { Link } from "expo-router";
-import { Text, View } from "react-native";
+import { ThemedText } from "@/src/components/ui/ThemedText";
+import { ThemedView } from "@/src/components/ui/ThemedView";
 
 export default function SignIn() {
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Sign In</Text>
+    <ThemedView style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <ThemedText>Sign In</ThemedText>
       <Link href="/(auth)/sign-up">Go to Sign Up</Link>
       <Link href="/(auth)/forgot-password">Forgot Password</Link>
       <Link href="/(app)/home">Go to App</Link>
-    </View>
+    </ThemedView>
   );
 }
