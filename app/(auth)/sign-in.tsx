@@ -1,31 +1,25 @@
-import { Ionicons } from "@expo/vector-icons";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Link } from "expo-router";
 import { Controller, useForm } from "react-hook-form";
 import {
-  Dimensions,
   KeyboardAvoidingView,
   Platform,
   Pressable,
-  SafeAreaView,
   ScrollView,
   StyleSheet,
-  TouchableOpacity,
   View,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { z } from "zod";
 import { Button } from "@/src/components/ui/Button";
+import { DotBackground } from "@/src/components/ui/DotBackground";
 import { TextField } from "@/src/components/ui/TextField";
 import { ThemedText } from "@/src/components/ui/ThemedText";
 import { ThemedView } from "@/src/components/ui/ThemedView";
+import { ThemeToggle } from "@/src/components/ui/ThemeToggle";
 import { Colors } from "@/src/constants/colors";
 import { useTheme } from "@/src/contexts/theme-context";
 import { useSignIn } from "@/src/features/auth/use-sign-in";
-
-const { width, height } = Dimensions.get("window");
-const DOT_SPACING = 22;
-const COLS = Math.ceil(width / DOT_SPACING) + 1;
-const ROWS = Math.ceil(height / DOT_SPACING) + 1;
 
 const schema = z.object({
   email: z.string().email("Correo inválido"),
@@ -34,27 +28,10 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-function DotBackground({ color }: { color: string }) {
-  return (
-    <View style={StyleSheet.absoluteFill} pointerEvents="none">
-      {Array.from({ length: ROWS }).map((_, row) => (
-        // biome-ignore lint/suspicious/noArrayIndexKey: static grid
-        <View key={row} style={styles.dotRow}>
-          {Array.from({ length: COLS }).map((_, col) => (
-            // biome-ignore lint/suspicious/noArrayIndexKey: static grid
-            <View key={col} style={[styles.dot, { backgroundColor: color }]} />
-          ))}
-        </View>
-      ))}
-    </View>
-  );
-}
-
 export default function SignIn() {
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
   const colors = Colors[theme];
   const { mutate: signIn, isPending, error } = useSignIn();
-
   const {
     control,
     handleSubmit,
@@ -63,20 +40,14 @@ export default function SignIn() {
 
   const onSubmit = (data: FormData) => signIn(data);
 
-  const dotColor = theme === "dark" ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.05)";
-
   return (
     <ThemedView style={styles.screen}>
-      <DotBackground color={dotColor} />
+      <DotBackground />
 
       <SafeAreaView style={styles.safe}>
-        <TouchableOpacity style={styles.themeToggle} onPress={toggleTheme}>
-          <Ionicons
-            name={theme === "dark" ? "sunny-outline" : "moon-outline"}
-            size={22}
-            color={colors.icon}
-          />
-        </TouchableOpacity>
+        <View style={styles.themeToggle}>
+          <ThemeToggle />
+        </View>
 
         <KeyboardAvoidingView
           style={styles.flex}
@@ -236,15 +207,5 @@ const styles = StyleSheet.create({
   },
   registerLink: {
     color: "#6B7A9E",
-  },
-  dotRow: {
-    flexDirection: "row",
-  },
-  dot: {
-    width: 2,
-    height: 2,
-    borderRadius: 1,
-    marginRight: DOT_SPACING - 2,
-    marginBottom: DOT_SPACING - 2,
   },
 });

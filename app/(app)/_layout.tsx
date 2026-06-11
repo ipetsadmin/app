@@ -1,5 +1,6 @@
 import { Tabs } from "expo-router";
 import { useTheme } from "@/src/contexts/theme-context";
+import { ThemeToggle } from "@/src/components/ui/ThemeToggle";
 import { Colors } from "@/src/constants/colors";
 
 export default function AppLayout() {
@@ -18,6 +19,7 @@ export default function AppLayout() {
           backgroundColor: Colors[colorScheme].background,
         },
         headerTintColor: Colors[colorScheme].text,
+        headerRight: () => <ThemeToggle />,
       }}
     >
       <Tabs.Screen name="home" options={{ title: "Home" }} />

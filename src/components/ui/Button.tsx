@@ -9,12 +9,15 @@ import {
 } from "react-native";
 import { ButtonColors } from "@/src/constants/colors";
 
+type IoniconName = React.ComponentProps<typeof Ionicons>["name"];
+
 export type ButtonProps = TouchableOpacityProps & {
   title: string;
   loading?: boolean;
+  icon?: IoniconName;
 };
 
-export function Button({ title, loading, disabled, style, ...rest }: ButtonProps) {
+export function Button({ title, loading, disabled, icon = "arrow-forward", style, ...rest }: ButtonProps) {
   const isDisabled = disabled || loading;
 
   return (
@@ -32,7 +35,7 @@ export function Button({ title, loading, disabled, style, ...rest }: ButtonProps
         <ActivityIndicator color={ButtonColors.primaryText} />
       ) : (
         <View style={styles.content}>
-          <Ionicons name="arrow-forward" size={18} color={ButtonColors.primaryText} style={styles.icon} />
+          <Ionicons name={icon} size={18} color={ButtonColors.primaryText} style={styles.icon} />
           <Text style={styles.text}>{title.toUpperCase()}</Text>
         </View>
       )}
