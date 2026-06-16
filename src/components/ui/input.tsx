@@ -22,13 +22,15 @@ export type InputProps = TextInputProps & {
   error?: string;
   /** Campo de contraseña: oculta el texto y muestra el toggle de ojo. */
   password?: boolean;
+  /** Texto fijo a la derecha del campo, ej. "KG". */
+  rightText?: string;
 };
 
 /**
  * Campo de texto con estética monospace/terminal, personalizado vía `useTheme`.
  */
 export const Input = forwardRef<TextInput, InputProps>(function Input(
-  { label, indexLabel, leftIcon, error, password, style, ...props },
+  { label, indexLabel, leftIcon, error, password, rightText, style, ...props },
   ref,
 ) {
   const { colors } = useTheme();
@@ -77,6 +79,10 @@ export const Input = forwardRef<TextInput, InputProps>(function Input(
             <Feather name={hidden ? "eye" : "eye-off"} size={20} color={colors.textMuted} />
           </Pressable>
         ) : null}
+
+        {rightText ? (
+          <Text style={[styles.rightText, { color: colors.textMuted }]}>{rightText}</Text>
+        ) : null}
       </View>
 
       {error ? <Text style={[styles.error, { color: colors.danger }]}>{error}</Text> : null}
@@ -121,6 +127,11 @@ const styles = StyleSheet.create({
     fontFamily: fonts.mono,
     fontSize: 17,
     height: "100%",
+  },
+  rightText: {
+    fontFamily: fonts.mono,
+    fontSize: 13,
+    letterSpacing: 1,
   },
   error: {
     fontFamily: fonts.mono,

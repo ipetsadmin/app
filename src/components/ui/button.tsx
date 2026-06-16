@@ -10,20 +10,33 @@ import {
 
 import { fonts, useTheme } from "@/theme";
 
+export type ButtonVariant = "primary" | "outline";
+
 export type ButtonProps = Omit<PressableProps, "style"> & {
   label: string;
   /** Icono de Feather mostrado antes del texto. */
   leftIcon?: keyof typeof Feather.glyphMap;
   /** Muestra un spinner y deshabilita el botón. */
   loading?: boolean;
+  /** Estilo visual. `primary` (relleno) por defecto, `outline` (borde). */
+  variant?: ButtonVariant;
 };
 
 /**
- * Botón principal con estética monospace/terminal, personalizado vía `useTheme`.
+ * Botón con estética monospace/terminal, personalizado vía `useTheme`.
  */
-export function Button({ label, leftIcon, loading, disabled, ...props }: ButtonProps) {
+export function Button({
+  label,
+  leftIcon,
+  loading,
+  disabled,
+  variant = "primary",
+  ...props
+}: ButtonProps) {
   const { colors } = useTheme();
   const isDisabled = disabled || loading;
+  const isOutline = variant === "outline";
+  const fg = isOutline ? colors.text : colors.accentText;
 
   return (
     <Pressable
@@ -31,16 +44,19 @@ export function Button({ label, leftIcon, loading, disabled, ...props }: ButtonP
       disabled={isDisabled}
       style={({ pressed }) => [
         styles.button,
-        { backgroundColor: colors.accent, opacity: isDisabled ? 0.6 : pressed ? 0.9 : 1 },
+        isOutline
+          ? { backgroundColor: "transparent", borderWidth: 1, borderColor: colors.border }
+          : { backgroundColor: colors.accent },
+        { opacity: isDisabled ? 0.6 : pressed ? 0.9 : 1 },
       ]}
       {...props}
     >
       {loading ? (
-        <ActivityIndicator color={colors.accentText} />
+        <ActivityIndicator color={fg} />
       ) : (
         <View style={styles.content}>
-          {leftIcon ? <Feather name={leftIcon} size={20} color={colors.accentText} /> : null}
-          <Text style={[styles.label, { color: colors.accentText }]}>{label.toUpperCase()}</Text>
+          {leftIcon ? <Feather name={leftIcon} size={20} color={fg} /> : null}
+          <Text style={[styles.label, { color: fg }]}>{label.toUpperCase()}</Text>
         </View>
       )}
     </Pressable>

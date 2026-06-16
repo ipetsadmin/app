@@ -1,12 +1,6 @@
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import { createContext, useCallback, useContext, useMemo, useState } from "react";
 
+import { storageKeys } from "@/constants";
 import { storage } from "@/lib/storage";
 
 /** Ajusta estos campos al shape real de tu usuario/sesión. */
@@ -24,8 +18,6 @@ export type Session = {
 type AuthContextValue = {
   user: User | null;
   token: string | null;
-  /** `true` mientras se restaura la sesión persistida al arrancar. */
-  isLoading: boolean;
   isAuthenticated: boolean;
   /** Guarda la sesión (token cifrado en SecureStore) y actualiza el estado. */
   signIn: (session: Session) => Promise<void>;
@@ -33,28 +25,25 @@ type AuthContextValue = {
   signOut: () => Promise<void>;
 };
 
-const SESSION_KEY = "auth-session";
-
 const AuthContext = createContext<AuthContextValue | null>(null);
 
-export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [session, setSession] = useState<Session | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  // Restaura la sesión guardada al montar.
-  useEffect(() => {
-    storage.Secure.get<Session>(SESSION_KEY)
-      .then((saved) => setSession(saved))
-      .finally(() => setIsLoading(false));
-  }, []);
+export function AuthProvider({
+  children,
+  initialSession = null,
+}: {
+  children: React.ReactNode;
+  /** Sesión ya restaurada en el bootstrap (precargada del SecureStore). */
+  initialSession?: Session | null;
+}) {
+  const [session, setSession] = useState<Session | null>(initialSession);
 
   const signIn = useCallback(async (next: Session) => {
-    await storage.Secure.save(SESSION_KEY, next);
+    await storage.Secure.save(storageKeys.authSession, next);
     setSession(next);
   }, []);
 
   const signOut = useCallback(async () => {
-    await storage.Secure.remove(SESSION_KEY);
+    await storage.Secure.remove(storageKeys.authSession);
     setSession(null);
   }, []);
 
@@ -62,12 +51,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     () => ({
       user: session?.user ?? null,
       token: session?.token ?? null,
-      isLoading,
       isAuthenticated: session != null,
       signIn,
       signOut,
     }),
-    [session, isLoading, signIn, signOut],
+    [session, signIn, signOut],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

@@ -6,9 +6,10 @@ import {
   useMemo,
   useState,
 } from "react";
-import { useColorScheme as useSystemColorScheme } from "react-native";
+import { Appearance, useColorScheme as useSystemColorScheme } from "react-native";
 import * as SystemUI from "expo-system-ui";
 
+import { storageKeys } from "@/constants";
 import { storage } from "@/lib/storage";
 
 import { palettes, type ColorScheme, type ThemeColors } from "./colors";
@@ -27,35 +28,29 @@ type ThemeContextValue = {
   toggle: () => void;
 };
 
-const STORAGE_KEY = "theme-preference";
-
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
 export function ThemeProvider({
   children,
-  forced,
+  initialPreference = null,
 }: {
   children: React.ReactNode;
-  /** Fija un esquema para todo el subárbol, ignorando sistema y preferencia. */
-  forced?: ColorScheme;
+  /** Preferencia ya cargada del storage (precargada en el bootstrap, evita flash). */
+  initialPreference?: ColorScheme | null;
 }) {
   const system: ColorScheme = useSystemColorScheme() === "dark" ? "dark" : "light";
-  const [preference, setPreferenceState] = useState<ColorScheme | null>(null);
-
-  // Carga la preferencia persistida al montar.
-  useEffect(() => {
-    storage.Async.get<ColorScheme>(STORAGE_KEY).then((saved) => {
-      if (saved === "light" || saved === "dark") setPreferenceState(saved);
-    });
-  }, []);
+  const [preference, setPreferenceState] = useState<ColorScheme | null>(initialPreference);
 
   const setPreference = useCallback((next: ColorScheme | null) => {
     setPreferenceState(next);
-    if (next == null) storage.Async.remove(STORAGE_KEY);
-    else storage.Async.save(STORAGE_KEY, next);
+    // Propaga a la capa nativa (NativeTabs, controles del sistema, etc.).
+    // "unspecified" = volver a seguir al sistema.
+    Appearance.setColorScheme(next ?? "unspecified");
+    if (next == null) storage.Async.remove(storageKeys.themePreference);
+    else storage.Async.save(storageKeys.themePreference, next);
   }, []);
 
-  const scheme: ColorScheme = forced ?? preference ?? system;
+  const scheme: ColorScheme = preference ?? system;
 
   // Sincroniza el fondo nativo de la raíz con el tema (expo-system-ui).
   useEffect(() => {

@@ -1,12 +1,5 @@
 import type { ReactNode } from "react";
-import {
-  KeyboardAvoidingView,
-  Platform,
-  ScrollView,
-  StyleSheet,
-  type StyleProp,
-  type ViewStyle,
-} from "react-native";
+import { ScrollView, StyleSheet, type StyleProp, type ViewStyle } from "react-native";
 
 import { useTheme } from "@/theme";
 
@@ -19,25 +12,27 @@ type KeyboardScreenProps = {
 
 /**
  * Contenedor de pantalla con fondo del tema, scroll y manejo de teclado.
- * Compartido por las pantallas de auth para un comportamiento consistente.
+ *
+ * Usa un `ScrollView` directo (sin `KeyboardAvoidingView`) para conservar el
+ * comportamiento nativo de las NativeTabs (inset automático + barra translúcida
+ * al hacer scroll). El teclado se evita con `automaticallyAdjustKeyboardInsets`
+ * en iOS; en Android lo resuelve el `adjustResize` por defecto de Expo.
  */
 export function KeyboardScreen({ children, center, contentStyle }: KeyboardScreenProps) {
   const { colors } = useTheme();
 
   return (
-    <KeyboardAvoidingView
+    <ScrollView
       style={[styles.flex, { backgroundColor: colors.background }]}
-      behavior={Platform.OS === "ios" ? "padding" : undefined}
+      contentContainerStyle={[styles.content, center && styles.center, contentStyle]}
+      keyboardShouldPersistTaps="handled"
+      keyboardDismissMode="interactive"
+      showsVerticalScrollIndicator={false}
+      automaticallyAdjustKeyboardInsets
+      contentInsetAdjustmentBehavior="automatic"
     >
-      <ScrollView
-        contentContainerStyle={[styles.content, center && styles.center, contentStyle]}
-        keyboardShouldPersistTaps="handled"
-        keyboardDismissMode="interactive"
-        showsVerticalScrollIndicator={false}
-      >
-        {children}
-      </ScrollView>
-    </KeyboardAvoidingView>
+      {children}
+    </ScrollView>
   );
 }
 

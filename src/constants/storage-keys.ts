@@ -7,6 +7,8 @@ export const storageKeys = {
   authSession: "auth-session",
   /** Preferencia de tema forzada por el usuario — Async. */
   themePreference: "theme-preference",
+  /** Idioma elegido por el usuario (es/en) — Async. */
+  language: "language",
   /** Flag de onboarding visto — Async. */
   onboardingSeen: "onboarding-seen",
 } as const;

@@ -28,15 +28,19 @@
       [
         "expo-splash-screen",
         {
-          "backgroundColor": "#208AEF",
-          "android": {
+          "backgroundColor": "#FFFFFF",
+          "image": "./assets/images/splash-icon.png",
+          "imageWidth": 76,
+          "dark": {
+            "backgroundColor": "#0E1217",
             "image": "./assets/images/splash-icon.png",
             "imageWidth": 76
           }
         }
       ],
       "expo-secure-store",
-      "expo-localization"
+      "expo-localization",
+      "expo-notifications"
     ],
     "experiments": {
       "typedRoutes": true,

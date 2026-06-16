@@ -1,24 +1,35 @@
 import { Stack } from "expo-router";
+import { StatusBar } from "expo-status-bar";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import "@/lib/i18n";
 import { AppProviders } from "@/providers";
+import { useTheme } from "@/theme";
 
 const RootStack = () => {
+  const { colors, isDark } = useTheme();
 
-  const isAuthenticated = false;
+  const isAuthenticated = true;
 
   const { top } = useSafeAreaInsets();
 
   return (
-    <Stack screenOptions={{ headerShown: false, contentStyle: { paddingTop: top, backgroundColor: "white" } }}>
-      <Stack.Protected guard={!isAuthenticated}>
-        <Stack.Screen name="(public)" />
-      </Stack.Protected>
-      <Stack.Protected guard={isAuthenticated}>
-        <Stack.Screen name="(auth)" />
-      </Stack.Protected>
-    </Stack>
+    <>
+      <StatusBar style={isDark ? "light" : "dark"} />
+      <Stack
+        screenOptions={{
+          headerShown: false,
+          contentStyle: { paddingTop: top, backgroundColor: colors.background },
+        }}
+      >
+        <Stack.Protected guard={!isAuthenticated}>
+          <Stack.Screen name="(public)" />
+        </Stack.Protected>
+        <Stack.Protected guard={isAuthenticated}>
+          <Stack.Screen name="(auth)" />
+        </Stack.Protected>
+      </Stack>
+    </>
   );
 };
 
