@@ -45,7 +45,7 @@ const PetDetail = () => {
       <AuthHeader overline={t("pets.detail.overline")} title={pet.name.toUpperCase()} />
 
       <Card style={styles.headCard}>
-        <PetAvatar name={pet.name} species={pet.species} size={72} />
+        <PetAvatar name={pet.name} species={pet.species} size={64} />
         <View style={styles.headInfo}>
           <Text style={styles.headName} numberOfLines={1}>
             {pet.name}
@@ -61,7 +61,7 @@ const PetDetail = () => {
           <Fragment key={row.label}>
             {i > 0 ? <View style={styles.divider} /> : null}
             <View style={styles.dataRow}>
-              <Feather name={row.icon} size={20} color={colors.textMuted} style={styles.dataIcon} />
+              <Feather name={row.icon} size={18} color={colors.textMuted} style={styles.dataIcon} />
               <View style={styles.dataText}>
                 <Text style={styles.dataLabel}>{row.label.toUpperCase()}</Text>
                 <Text style={styles.dataValue}>{row.value}</Text>
@@ -75,7 +75,7 @@ const PetDetail = () => {
         <>
           <Text style={styles.section}>{t("pets.detail.nextEvent").toUpperCase()}</Text>
           <Card style={styles.eventCard}>
-            <Feather name={pet.nextEvent.icon} size={20} color={colors.textMuted} />
+            <Feather name={pet.nextEvent.icon} size={18} color={colors.textMuted} />
             <View style={styles.dataText}>
               <Text style={styles.dataValue}>{pet.nextEvent.label}</Text>
               <Text style={styles.dataLabel}>{pet.nextEvent.date.toUpperCase()}</Text>
@@ -95,58 +95,58 @@ const makeStyles = (colors: ThemeColors) =>
       justifyContent: "center",
     },
     content: {
-      paddingHorizontal: 24,
-      paddingTop: 8,
+      paddingHorizontal: 20,
+      paddingTop: 6,
       paddingBottom: 24,
-      gap: 18,
+      gap: 16,
     },
     headCard: {
       flexDirection: "row",
       alignItems: "center",
-      gap: 18,
+      gap: 16,
     },
     headInfo: {
       flex: 1,
-      gap: 6,
+      gap: 5,
     },
     headName: {
       fontFamily: fonts.mono,
-      fontSize: 26,
+      fontSize: 22,
       fontWeight: "800",
       letterSpacing: 2,
       color: colors.text,
     },
     headMeta: {
       fontFamily: fonts.mono,
-      fontSize: 12,
+      fontSize: 11,
       letterSpacing: 1.5,
       color: colors.textMuted,
     },
     dataCard: {
-      paddingVertical: 4,
+      paddingVertical: 2,
     },
     dataRow: {
       flexDirection: "row",
       alignItems: "center",
-      gap: 16,
-      paddingVertical: 16,
+      gap: 14,
+      paddingVertical: 14,
     },
     dataIcon: {
-      width: 24,
+      width: 22,
       textAlign: "center",
     },
     dataText: {
       flex: 1,
-      gap: 4,
+      gap: 3,
     },
     dataLabel: {
       fontFamily: fonts.mono,
-      fontSize: 11,
+      fontSize: 10,
       letterSpacing: 1.5,
       color: colors.label,
     },
     dataValue: {
-      fontSize: 18,
+      fontSize: 15,
       color: colors.text,
     },
     divider: {
@@ -156,7 +156,7 @@ const makeStyles = (colors: ThemeColors) =>
     },
     section: {
       fontFamily: fonts.mono,
-      fontSize: 12,
+      fontSize: 11,
       letterSpacing: 2,
       color: colors.label,
       marginBottom: -8,
@@ -165,7 +165,7 @@ const makeStyles = (colors: ThemeColors) =>
     eventCard: {
       flexDirection: "row",
       alignItems: "center",
-      gap: 16,
+      gap: 14,
     },
   });
 

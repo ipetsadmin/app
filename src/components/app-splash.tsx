@@ -33,7 +33,7 @@ export function AppSplash() {
       pointerEvents="none"
       style={[StyleSheet.absoluteFill, styles.container, { backgroundColor: colors.background, opacity }]}
     >
-      <Ionicons name="paw" size={72} color={colors.accent} />
+      <Ionicons name="paw" size={60} color={colors.accent} />
       <Text style={[styles.wordmark, { color: colors.text }]}>
         TRUFFA<Text style={{ color: colors.accent }}>.</Text>
       </Text>
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   },
   wordmark: {
     fontFamily: fonts.mono,
-    fontSize: 48,
+    fontSize: 40,
     fontWeight: "800",
     letterSpacing: 4,
   },

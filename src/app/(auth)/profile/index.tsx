@@ -72,7 +72,7 @@ const Profile = () => {
           <Fragment key={row.label}>
             {i > 0 ? <View style={styles.divider} /> : null}
             <View style={styles.dataRow}>
-              <Feather name={row.icon} size={20} color={colors.textMuted} style={styles.dataIcon} />
+              <Feather name={row.icon} size={18} color={colors.textMuted} style={styles.dataIcon} />
               <View style={styles.dataText}>
                 <Text style={styles.dataLabel}>{row.label.toUpperCase()}</Text>
                 <Text style={styles.dataValue}>{row.value}</Text>
@@ -88,7 +88,7 @@ const Profile = () => {
         style={({ pressed }) => [styles.signOut, { opacity: pressed ? 0.7 : 1 }]}
         accessibilityRole="button"
       >
-        <Feather name="log-out" size={20} color={colors.danger} />
+        <Feather name="log-out" size={18} color={colors.danger} />
         <Text style={styles.signOutText}>{t("profile.signOut").toUpperCase()}</Text>
       </Pressable>
     </ScrollView>
@@ -98,10 +98,10 @@ const Profile = () => {
 const makeStyles = (colors: ThemeColors) =>
   StyleSheet.create({
     content: {
-      paddingHorizontal: 24,
-      paddingTop: 16,
+      paddingHorizontal: 20,
+      paddingTop: 12,
       paddingBottom: 24,
-      gap: 24,
+      gap: 18,
     },
     header: {
       flexDirection: "row",
@@ -109,7 +109,7 @@ const makeStyles = (colors: ThemeColors) =>
     },
     title: {
       fontFamily: fonts.mono,
-      fontSize: 30,
+      fontSize: 24,
       fontWeight: "800",
       letterSpacing: 4,
       color: colors.text,
@@ -117,11 +117,11 @@ const makeStyles = (colors: ThemeColors) =>
     profileCard: {
       flexDirection: "row",
       alignItems: "center",
-      gap: 18,
+      gap: 16,
     },
     avatar: {
-      width: 80,
-      height: 80,
+      width: 64,
+      height: 64,
       borderRadius: 100,
       borderWidth: 1,
       borderColor: colors.border,
@@ -131,81 +131,81 @@ const makeStyles = (colors: ThemeColors) =>
     },
     avatarText: {
       fontFamily: fonts.mono,
-      fontSize: 26,
+      fontSize: 22,
       fontWeight: "700",
       color: colors.textMuted,
     },
     profileInfo: {
       flex: 1,
-      gap: 6,
+      gap: 5,
     },
     name: {
-      fontSize: 26,
+      fontSize: 20,
       fontWeight: "700",
       color: colors.text,
     },
     email: {
       fontFamily: fonts.mono,
-      fontSize: 13,
+      fontSize: 12,
       letterSpacing: 1.5,
       color: colors.textMuted,
     },
     statsRow: {
       flexDirection: "row",
-      gap: 16,
+      gap: 14,
     },
     statCard: {
       flex: 1,
       alignItems: "center",
-      gap: 8,
-      paddingVertical: 24,
+      gap: 6,
+      paddingVertical: 20,
     },
     statValue: {
       fontFamily: fonts.mono,
-      fontSize: 40,
+      fontSize: 30,
       fontWeight: "800",
-      letterSpacing: 4,
+      letterSpacing: 3,
       color: colors.text,
     },
     statLabel: {
       fontFamily: fonts.mono,
-      fontSize: 12,
+      fontSize: 11,
       letterSpacing: 2,
       color: colors.textMuted,
     },
     section: {
       fontFamily: fonts.mono,
-      fontSize: 12,
+      fontSize: 11,
       letterSpacing: 2,
       color: colors.label,
       marginBottom: -8,
       marginTop: 4,
     },
     dataCard: {
-      paddingVertical: 4,
+      paddingVertical: 2,
     },
     dataRow: {
       flexDirection: "row",
       alignItems: "center",
-      gap: 16,
-      paddingVertical: 16,
+      gap: 14,
+      paddingVertical: 14,
     },
     dataIcon: {
-      width: 24,
+      width: 22,
       textAlign: "center",
     },
     dataText: {
       flex: 1,
-      gap: 4,
+      gap: 3,
     },
     dataLabel: {
       fontFamily: fonts.mono,
-      fontSize: 11,
+      fontSize: 10,
       letterSpacing: 1.5,
       color: colors.label,
     },
     dataValue: {
-      fontSize: 18,
+      fontSize: 15,
       color: colors.text,
     },
     divider: {
@@ -217,16 +217,16 @@ const makeStyles = (colors: ThemeColors) =>
       flexDirection: "row",
       alignItems: "center",
       justifyContent: "center",
-      gap: 12,
-      height: 58,
+      gap: 10,
+      height: 52,
       borderRadius: 100,
       borderWidth: 1,
       borderColor: colors.danger,
-      marginTop: 8,
+      marginTop: 6,
     },
     signOutText: {
       fontFamily: fonts.mono,
-      fontSize: 14,
+      fontSize: 13,
       letterSpacing: 2,
       fontWeight: "600",
       color: colors.danger,

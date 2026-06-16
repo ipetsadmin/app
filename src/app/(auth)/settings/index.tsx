@@ -53,7 +53,7 @@ const Settings = () => {
       <Text style={styles.section}>{t("settings.appearance").toUpperCase()}</Text>
       <Card style={styles.card}>
         <Pressable style={styles.row} onPress={toggle} accessibilityRole="button">
-          <Feather name={isDark ? "moon" : "sun"} size={20} color={colors.textMuted} />
+          <Feather name={isDark ? "moon" : "sun"} size={18} color={colors.textMuted} />
           <Text style={styles.rowLabel}>{t("settings.theme")}</Text>
           <Text style={styles.rowValue}>{isDark ? t("settings.dark") : t("settings.light")}</Text>
         </Pressable>
@@ -89,7 +89,7 @@ const Settings = () => {
       <Text style={styles.section}>{t("settings.channels").toUpperCase()}</Text>
       <Card style={styles.card}>
         <View style={styles.channelRow}>
-          <Feather name="bell" size={20} color={colors.textMuted} />
+          <Feather name="bell" size={18} color={colors.textMuted} />
           <View style={styles.channelText}>
             <Text style={styles.channelTitle}>{t("settings.push")}</Text>
             <Text style={styles.channelSubtitle}>{t("settings.pushDevice").toUpperCase()}</Text>
@@ -106,7 +106,7 @@ const Settings = () => {
         <View style={styles.divider} />
 
         <View style={styles.channelRow}>
-          <Feather name="mail" size={20} color={colors.textMuted} />
+          <Feather name="mail" size={18} color={colors.textMuted} />
           <View style={styles.channelText}>
             <Text style={styles.channelTitle}>{t("settings.email")}</Text>
             <Text style={styles.channelSubtitle}>{t("settings.emailWeekly").toUpperCase()}</Text>
@@ -127,43 +127,43 @@ const Settings = () => {
 const makeStyles = (colors: ThemeColors) =>
   StyleSheet.create({
     content: {
-      paddingHorizontal: 24,
-      paddingTop: 16,
+      paddingHorizontal: 20,
+      paddingTop: 12,
       paddingBottom: 24,
-      gap: 18,
+      gap: 16,
     },
     title: {
       fontFamily: fonts.mono,
-      fontSize: 30,
+      fontSize: 24,
       fontWeight: "800",
       letterSpacing: 4,
       color: colors.text,
     },
     section: {
       fontFamily: fonts.mono,
-      fontSize: 12,
+      fontSize: 11,
       letterSpacing: 2,
       color: colors.label,
       marginBottom: -6,
-      marginTop: 6,
+      marginTop: 4,
     },
     card: {
-      paddingVertical: 4,
+      paddingVertical: 2,
     },
     row: {
       flexDirection: "row",
       alignItems: "center",
-      gap: 16,
-      paddingVertical: 18,
+      gap: 14,
+      paddingVertical: 16,
     },
     rowLabel: {
       flex: 1,
-      fontSize: 17,
+      fontSize: 15,
       color: colors.text,
     },
     rowValue: {
       fontFamily: fonts.mono,
-      fontSize: 14,
+      fontSize: 13,
       letterSpacing: 1,
       color: colors.textMuted,
     },
@@ -173,35 +173,35 @@ const makeStyles = (colors: ThemeColors) =>
     },
     segmentItem: {
       flex: 1,
-      height: 52,
-      borderRadius: 14,
+      height: 46,
+      borderRadius: 12,
       borderWidth: 1,
       alignItems: "center",
       justifyContent: "center",
     },
     segmentText: {
       fontFamily: fonts.mono,
-      fontSize: 14,
+      fontSize: 13,
       letterSpacing: 1.5,
       fontWeight: "600",
     },
     channelRow: {
       flexDirection: "row",
       alignItems: "center",
-      gap: 16,
-      paddingVertical: 16,
+      gap: 14,
+      paddingVertical: 14,
     },
     channelText: {
       flex: 1,
-      gap: 4,
+      gap: 3,
     },
     channelTitle: {
-      fontSize: 17,
+      fontSize: 15,
       color: colors.text,
     },
     channelSubtitle: {
       fontFamily: fonts.mono,
-      fontSize: 11,
+      fontSize: 10,
       letterSpacing: 1.5,
       color: colors.label,
     },

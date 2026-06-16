@@ -126,6 +126,6 @@ export function RegisterForm({ onSubmit }: RegisterFormProps) {
 
 const styles = StyleSheet.create({
   form: {
-    gap: 22,
+    gap: 16,
   },
 });

@@ -37,11 +37,11 @@ export function PetForm({ onSubmit, onCancel }: PetFormProps) {
       {/* Foto */}
       <View style={styles.photoWrap}>
         <View style={styles.photo}>
-          <Feather name="camera" size={26} color={colors.textMuted} />
+          <Feather name="camera" size={22} color={colors.textMuted} />
           <Text style={styles.photoText}>{t("pets.new.photo").toUpperCase()}</Text>
         </View>
         <View style={styles.photoBadge}>
-          <Feather name="plus" size={18} color={colors.accentText} />
+          <Feather name="plus" size={16} color={colors.accentText} />
         </View>
       </View>
 
@@ -194,7 +194,7 @@ function Field({
       <Text
         style={{
           fontFamily: fonts.mono,
-          fontSize: 12,
+          fontSize: 11,
           letterSpacing: 2,
           color: colors.label,
           paddingHorizontal: 2,
@@ -254,15 +254,15 @@ function withColor(icon: ReactNode, color: string): ReactNode {
 const makeStyles = (colors: ThemeColors) =>
   StyleSheet.create({
     form: {
-      gap: 22,
+      gap: 16,
     },
     photoWrap: {
       alignSelf: "center",
-      marginVertical: 4,
+      marginVertical: 2,
     },
     photo: {
-      width: 150,
-      height: 150,
+      width: 124,
+      height: 124,
       borderRadius: 100,
       borderWidth: 1,
       borderStyle: "dashed",
@@ -270,20 +270,20 @@ const makeStyles = (colors: ThemeColors) =>
       backgroundColor: colors.inputBg,
       alignItems: "center",
       justifyContent: "center",
-      gap: 8,
+      gap: 6,
     },
     photoText: {
       fontFamily: fonts.mono,
-      fontSize: 12,
+      fontSize: 11,
       letterSpacing: 2,
       color: colors.textMuted,
     },
     photoBadge: {
       position: "absolute",
       right: 2,
-      bottom: 8,
-      width: 40,
-      height: 40,
+      bottom: 6,
+      width: 36,
+      height: 36,
       borderRadius: 100,
       backgroundColor: colors.accent,
       alignItems: "center",
@@ -296,21 +296,21 @@ const makeStyles = (colors: ThemeColors) =>
     segmentItem: {
       flex: 1,
       flexDirection: "row",
-      height: 56,
-      borderRadius: 14,
+      height: 48,
+      borderRadius: 12,
       borderWidth: 1,
       alignItems: "center",
       justifyContent: "center",
     },
     segmentText: {
       fontFamily: fonts.mono,
-      fontSize: 14,
+      fontSize: 13,
       letterSpacing: 1.5,
       fontWeight: "600",
     },
     row: {
       flexDirection: "row",
-      gap: 16,
+      gap: 14,
     },
     rowItem: {
       flex: 1,

@@ -58,7 +58,7 @@ export const Input = forwardRef<TextInput, InputProps>(function Input(
         ]}
       >
         {leftIcon ? (
-          <Feather name={leftIcon} size={20} color={colors.textMuted} style={styles.leftIcon} />
+          <Feather name={leftIcon} size={18} color={colors.textMuted} style={styles.leftIcon} />
         ) : null}
 
         <TextInput
@@ -76,7 +76,7 @@ export const Input = forwardRef<TextInput, InputProps>(function Input(
             accessibilityRole="button"
             accessibilityLabel={hidden ? "Mostrar contraseña" : "Ocultar contraseña"}
           >
-            <Feather name={hidden ? "eye" : "eye-off"} size={20} color={colors.textMuted} />
+            <Feather name={hidden ? "eye" : "eye-off"} size={18} color={colors.textMuted} />
           </Pressable>
         ) : null}
 
@@ -92,7 +92,7 @@ export const Input = forwardRef<TextInput, InputProps>(function Input(
 
 const styles = StyleSheet.create({
   wrapper: {
-    gap: 10,
+    gap: 8,
   },
   labelRow: {
     flexDirection: "row",
@@ -102,22 +102,22 @@ const styles = StyleSheet.create({
   },
   label: {
     fontFamily: fonts.mono,
-    fontSize: 12,
+    fontSize: 11,
     letterSpacing: 2,
   },
   index: {
     fontFamily: fonts.mono,
-    fontSize: 12,
+    fontSize: 11,
     letterSpacing: 1,
   },
   field: {
     flexDirection: "row",
     alignItems: "center",
-    height: 60,
+    height: 52,
     borderWidth: 1,
-    borderRadius: 14,
-    paddingHorizontal: 16,
-    gap: 12,
+    borderRadius: 12,
+    paddingHorizontal: 14,
+    gap: 10,
   },
   leftIcon: {
     marginRight: 2,
@@ -125,12 +125,12 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     fontFamily: fonts.mono,
-    fontSize: 17,
+    fontSize: 15,
     height: "100%",
   },
   rightText: {
     fontFamily: fonts.mono,
-    fontSize: 13,
+    fontSize: 12,
     letterSpacing: 1,
   },
   error: {

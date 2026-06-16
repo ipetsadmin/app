@@ -100,7 +100,7 @@ export function SignInForm({ onSubmit, onForgotPassword }: SignInFormProps) {
 
 const styles = StyleSheet.create({
   form: {
-    gap: 22,
+    gap: 16,
   },
   forgot: {
     alignSelf: "flex-end",
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
   },
   forgotText: {
     fontFamily: fonts.mono,
-    fontSize: 12,
+    fontSize: 11,
     letterSpacing: 1.5,
     textTransform: "uppercase",
   },

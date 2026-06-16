@@ -65,6 +65,6 @@ export function ForgotPasswordForm({ onSubmit }: ForgotPasswordFormProps) {
 
 const styles = StyleSheet.create({
   form: {
-    gap: 22,
+    gap: 16,
   },
 });

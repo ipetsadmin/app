@@ -15,11 +15,11 @@ const ORDER: AgendaCategory[] = ["vaccine", "birthday", "medication"];
 const categoryIcon = (category: AgendaCategory, color: string) => {
   switch (category) {
     case "vaccine":
-      return <MaterialCommunityIcons name="needle" size={20} color={color} />;
+      return <MaterialCommunityIcons name="needle" size={18} color={color} />;
     case "birthday":
-      return <Feather name="gift" size={20} color={color} />;
+      return <Feather name="gift" size={18} color={color} />;
     case "medication":
-      return <MaterialCommunityIcons name="pill" size={20} color={color} />;
+      return <MaterialCommunityIcons name="pill" size={18} color={color} />;
   }
 };
 
@@ -83,7 +83,7 @@ const Dashboard = () => {
               <Fragment key={item.id}>
                 <View style={styles.divider} />
                 <View style={styles.itemRow}>
-                  {pet ? <PetAvatar name={pet.name} species={pet.species} size={48} /> : null}
+                  {pet ? <PetAvatar name={pet.name} species={pet.species} size={44} /> : null}
                   <View style={styles.itemText}>
                     <Text style={styles.itemTitle} numberOfLines={1}>
                       {item.title}
@@ -108,28 +108,28 @@ const Dashboard = () => {
 const makeStyles = (colors: ThemeColors) =>
   StyleSheet.create({
     content: {
-      paddingHorizontal: 24,
-      paddingTop: 16,
+      paddingHorizontal: 20,
+      paddingTop: 12,
       paddingBottom: 24,
-      gap: 18,
+      gap: 16,
     },
     header: {
-      gap: 6,
+      gap: 4,
       marginBottom: 2,
     },
     title: {
       fontFamily: fonts.mono,
-      fontSize: 30,
+      fontSize: 24,
       fontWeight: "800",
       letterSpacing: 4,
       color: colors.text,
     },
     welcome: {
-      fontSize: 15,
+      fontSize: 14,
       color: colors.textMuted,
     },
     tipCard: {
-      gap: 16,
+      gap: 14,
     },
     tipHeader: {
       flexDirection: "row",
@@ -148,13 +148,13 @@ const makeStyles = (colors: ThemeColors) =>
     },
     overline: {
       fontFamily: fonts.mono,
-      fontSize: 12,
+      fontSize: 11,
       letterSpacing: 2,
       color: colors.label,
     },
     tipText: {
-      fontSize: 22,
-      lineHeight: 32,
+      fontSize: 17,
+      lineHeight: 25,
       color: colors.text,
       fontWeight: "500",
     },
@@ -166,24 +166,24 @@ const makeStyles = (colors: ThemeColors) =>
     },
     section: {
       fontFamily: fonts.mono,
-      fontSize: 12,
+      fontSize: 11,
       letterSpacing: 2,
       color: colors.label,
     },
     groupCard: {
       gap: 4,
-      paddingVertical: 16,
+      paddingVertical: 14,
     },
     groupHeader: {
       flexDirection: "row",
       alignItems: "center",
-      gap: 16,
-      paddingBottom: 12,
+      gap: 14,
+      paddingBottom: 10,
     },
     iconBadge: {
-      width: 44,
-      height: 44,
-      borderRadius: 12,
+      width: 40,
+      height: 40,
+      borderRadius: 11,
       borderWidth: 1,
       borderColor: colors.border,
       backgroundColor: colors.inputBg,
@@ -192,13 +192,13 @@ const makeStyles = (colors: ThemeColors) =>
     },
     groupTitle: {
       flex: 1,
-      fontSize: 20,
+      fontSize: 17,
       fontWeight: "600",
       color: colors.text,
     },
     count: {
       fontFamily: fonts.mono,
-      fontSize: 22,
+      fontSize: 18,
       fontWeight: "800",
       letterSpacing: 2,
       color: colors.textMuted,
@@ -206,32 +206,32 @@ const makeStyles = (colors: ThemeColors) =>
     itemRow: {
       flexDirection: "row",
       alignItems: "center",
-      gap: 14,
-      paddingTop: 14,
+      gap: 12,
+      paddingTop: 12,
     },
     itemText: {
       flex: 1,
-      gap: 4,
+      gap: 3,
     },
     itemTitle: {
-      fontSize: 18,
+      fontSize: 15,
       color: colors.text,
     },
     itemMeta: {
       fontFamily: fonts.mono,
-      fontSize: 12,
+      fontSize: 11,
       letterSpacing: 1,
       color: colors.label,
     },
     pill: {
       borderWidth: 1,
       borderRadius: 100,
-      paddingHorizontal: 14,
-      paddingVertical: 6,
+      paddingHorizontal: 12,
+      paddingVertical: 5,
     },
     pillText: {
       fontFamily: fonts.mono,
-      fontSize: 12,
+      fontSize: 11,
       letterSpacing: 1,
       color: colors.textMuted,
     },

@@ -53,7 +53,7 @@ function PetCard({ pet, colors, styles, t }: PetCardProps) {
       accessibilityRole="button"
     >
       <Card style={styles.petCard}>
-        <PetAvatar name={pet.name} species={pet.species} />
+        <PetAvatar name={pet.name} species={pet.species} size={56} />
         <View style={styles.info}>
           <Text style={styles.name} numberOfLines={1}>
             {pet.name}
@@ -70,7 +70,7 @@ function PetCard({ pet, colors, styles, t }: PetCardProps) {
             </View>
           ) : null}
         </View>
-        <Feather name="chevron-right" size={22} color={colors.textMuted} />
+        <Feather name="chevron-right" size={20} color={colors.textMuted} />
       </Card>
     </Pressable>
   );
@@ -79,31 +79,31 @@ function PetCard({ pet, colors, styles, t }: PetCardProps) {
 const makeStyles = (colors: ThemeColors) =>
   StyleSheet.create({
     content: {
-      paddingHorizontal: 24,
-      paddingTop: 16,
+      paddingHorizontal: 20,
+      paddingTop: 12,
       paddingBottom: 24,
-      gap: 16,
+      gap: 14,
     },
     petCard: {
       flexDirection: "row",
       alignItems: "center",
-      gap: 16,
-      paddingVertical: 18,
+      gap: 14,
+      paddingVertical: 16,
     },
     info: {
       flex: 1,
-      gap: 6,
+      gap: 5,
     },
     name: {
       fontFamily: fonts.mono,
-      fontSize: 24,
+      fontSize: 20,
       fontWeight: "800",
       letterSpacing: 2,
       color: colors.text,
     },
     meta: {
       fontFamily: fonts.mono,
-      fontSize: 12,
+      fontSize: 11,
       letterSpacing: 1,
       color: colors.textMuted,
       textTransform: "uppercase",
@@ -117,9 +117,9 @@ const makeStyles = (colors: ThemeColors) =>
     next: {
       flex: 1,
       fontFamily: fonts.mono,
-      fontSize: 12,
+      fontSize: 11,
       letterSpacing: 1,
-      lineHeight: 18,
+      lineHeight: 17,
       color: colors.label,
       textTransform: "uppercase",
     },
@@ -127,26 +127,26 @@ const makeStyles = (colors: ThemeColors) =>
       flexDirection: "row",
       alignItems: "center",
       justifyContent: "center",
-      gap: 12,
-      height: 72,
-      borderRadius: 18,
+      gap: 10,
+      height: 64,
+      borderRadius: 16,
       borderWidth: 1,
       borderStyle: "dashed",
       borderColor: colors.border,
     },
     addText: {
       fontFamily: fonts.mono,
-      fontSize: 14,
+      fontSize: 13,
       letterSpacing: 2,
       color: colors.textMuted,
     },
     footer: {
       fontFamily: fonts.mono,
-      fontSize: 12,
+      fontSize: 11,
       letterSpacing: 2,
       color: colors.label,
       textAlign: "center",
-      marginTop: 8,
+      marginTop: 6,
     },
   });
 

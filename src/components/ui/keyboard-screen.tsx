@@ -42,9 +42,9 @@ const styles = StyleSheet.create({
   },
   content: {
     flexGrow: 1,
-    paddingHorizontal: 28,
-    paddingVertical: 40,
-    gap: 28,
+    paddingHorizontal: 20,
+    paddingVertical: 28,
+    gap: 18,
   },
   center: {
     justifyContent: "center",

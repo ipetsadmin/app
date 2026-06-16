@@ -38,8 +38,8 @@ export function Card({ children, style, brackets = false }: CardProps) {
 const styles = StyleSheet.create({
   card: {
     borderWidth: 1,
-    borderRadius: 18,
-    padding: 20,
+    borderRadius: 16,
+    padding: 16,
   },
   corner: {
     position: "absolute",

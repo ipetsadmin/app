@@ -55,7 +55,7 @@ export function Button({
         <ActivityIndicator color={fg} />
       ) : (
         <View style={styles.content}>
-          {leftIcon ? <Feather name={leftIcon} size={20} color={fg} /> : null}
+          {leftIcon ? <Feather name={leftIcon} size={18} color={fg} /> : null}
           <Text style={[styles.label, { color: fg }]}>{label.toUpperCase()}</Text>
         </View>
       )}
@@ -65,7 +65,7 @@ export function Button({
 
 const styles = StyleSheet.create({
   button: {
-    height: 60,
+    height: 52,
     borderRadius: 100,
     alignItems: "center",
     justifyContent: "center",
@@ -73,11 +73,11 @@ const styles = StyleSheet.create({
   content: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 12,
+    gap: 10,
   },
   label: {
     fontFamily: fonts.mono,
-    fontSize: 15,
+    fontSize: 13,
     letterSpacing: 2,
     fontWeight: "600",
   },

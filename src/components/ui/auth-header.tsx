@@ -29,7 +29,7 @@ export function AuthHeader({ overline, title, onBack }: AuthHeaderProps) {
             { backgroundColor: colors.inputBg, borderColor: colors.border, opacity: pressed ? 0.7 : 1 },
           ]}
         >
-          <Feather name="chevron-left" size={26} color={colors.text} />
+          <Feather name="chevron-left" size={24} color={colors.text} />
         </Pressable>
       ) : null}
 
@@ -47,11 +47,11 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 18,
+    gap: 14,
   },
   back: {
-    width: 64,
-    height: 64,
+    width: 52,
+    height: 52,
     borderRadius: 100,
     borderWidth: 1,
     alignItems: "center",
@@ -63,12 +63,12 @@ const styles = StyleSheet.create({
   },
   overline: {
     fontFamily: fonts.mono,
-    fontSize: 12,
+    fontSize: 11,
     letterSpacing: 2,
   },
   title: {
     fontFamily: fonts.mono,
-    fontSize: 38,
+    fontSize: 26,
     fontWeight: "800",
     letterSpacing: 3,
   },

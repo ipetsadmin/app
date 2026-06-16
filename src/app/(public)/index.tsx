@@ -73,13 +73,13 @@ const styles = StyleSheet.create({
   content: {
     flexGrow: 1,
     justifyContent: "center",
-    paddingHorizontal: 28,
-    paddingVertical: 40,
-    gap: 28,
+    paddingHorizontal: 20,
+    paddingVertical: 28,
+    gap: 22,
   },
   wordmark: {
     fontFamily: fonts.mono,
-    fontSize: 56,
+    fontSize: 40,
     fontWeight: "800",
     letterSpacing: 4,
   },
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
   },
   footerText: {
     fontFamily: fonts.mono,
-    fontSize: 12,
+    fontSize: 11,
     letterSpacing: 1.5,
     textTransform: "uppercase",
   },

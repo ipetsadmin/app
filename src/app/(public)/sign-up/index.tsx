@@ -27,9 +27,9 @@ const SignUp = () => {
 
 const styles = StyleSheet.create({
   subtitle: {
-    fontSize: 20,
-    lineHeight: 30,
-    marginTop: -8,
+    fontSize: 16,
+    lineHeight: 24,
+    marginTop: -6,
   },
 });
 
