@@ -6,6 +6,8 @@
     "@expo/ui": "~56.0.18",
     "@expo/vector-icons": "^15.0.2",
     "@hookform/resolvers": "^5.4.0",
+    "@ipetsadmin/api-client": "^1.7.0",
+    "@ipetsadmin/contracts": "^1.7.0",
     "@react-native-async-storage/async-storage": "2.2.0",
     "axios": "^1.18.0",
     "expo": "~56.0.12",

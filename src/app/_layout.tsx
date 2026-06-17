@@ -9,7 +9,7 @@ import { useTheme } from "@/theme";
 const RootStack = () => {
   const { colors, isDark } = useTheme();
 
-  const isAuthenticated = true;
+  const isAuthenticated = false;
 
   const { top } = useSafeAreaInsets();
 
