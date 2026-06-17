@@ -4,20 +4,22 @@ import { useTranslation } from "react-i18next";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 
 import { Card } from "@/components/ui";
+import { useProfile } from "@/entities";
 import { useAuth } from "@/providers";
 import { fonts, useTheme, type ThemeColors } from "@/theme";
 
 const Profile = () => {
   const { colors } = useTheme();
   const { t } = useTranslation();
-  const { user, signOut } = useAuth();
+  const { user, logout } = useAuth();
+  const { data: profile } = useProfile();
   const styles = makeStyles(colors);
 
-  // Datos provisionales (mock) hasta conectar el backend.
-  const name = user?.name ?? "Mateo Ríos";
-  const email = user?.email ?? "mateo@truffa.app";
-  const phone = "+54 9 11 5555 0142";
-  const city = "Buenos Aires";
+  // El nombre/teléfono/ciudad vienen del perfil; mock como fallback hasta tener datos.
+  const name = profile?.profile?.fullName ?? "Mateo Ríos";
+  const email = profile?.email ?? user?.email ?? "mateo@truffa.app";
+  const phone = profile?.profile?.phone ?? "+54 9 11 5555 0142";
+  const city = profile?.profile?.location?.city ?? "Buenos Aires";
   const initial = name.charAt(0).toUpperCase();
 
   const dataRows = [
@@ -84,7 +86,7 @@ const Profile = () => {
 
       {/* Cerrar sesión */}
       <Pressable
-        onPress={signOut}
+        onPress={logout}
         style={({ pressed }) => [styles.signOut, { opacity: pressed ? 0.7 : 1 }]}
         accessibilityRole="button"
       >

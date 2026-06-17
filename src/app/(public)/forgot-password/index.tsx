@@ -10,7 +10,10 @@ const ForgotPassword = () => {
   const { t } = useTranslation();
 
   const handleSubmit = async (values: ForgotPasswordValues) => {
-    // TODO: llamar al backend (axios) para enviar el enlace de recuperación.
+    // TODO: @ipetsadmin/api-client aún NO expone un endpoint de forgot/reset-password
+    // (solo register, login, oauth/google, refresh, logout, me, verify-email).
+    // Cuando el backend lo agregue, cablear aquí vía un hook en entities/auth
+    // (la clave mutationKeys.auth.forgotPassword ya existe).
     console.log("forgot-password", values);
   };
 

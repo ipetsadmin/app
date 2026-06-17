@@ -6,6 +6,10 @@ export const es = {
     noAccount: "¿No tenés cuenta?",
     createAccount: "Crear cuenta",
   },
+  errors: {
+    title: "Algo salió mal",
+    generic: "Ocurrió un error. Intentá de nuevo.",
+  },
   forgotPassword: {
     overline: "Recuperación",
     title: "RESTABLECER",

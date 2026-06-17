@@ -5,9 +5,9 @@ import { ScrollView, StyleSheet, Text, View } from "react-native";
 
 import { Card } from "@/components/ui";
 import { dailyTip, dummyAgenda } from "@/constants";
+import { useProfile } from "@/entities";
 import type { AgendaCategory } from "@/features/dashboard";
 import { getPetById, PetAvatar } from "@/features/pets";
-import { useAuth } from "@/providers";
 import { fonts, useTheme, type ThemeColors } from "@/theme";
 
 const ORDER: AgendaCategory[] = ["vaccine", "birthday", "medication"];
@@ -26,10 +26,10 @@ const categoryIcon = (category: AgendaCategory, color: string) => {
 const Dashboard = () => {
   const { colors } = useTheme();
   const { t } = useTranslation();
-  const { user } = useAuth();
+  const { data: profile } = useProfile();
   const styles = makeStyles(colors);
 
-  const firstName = user?.name?.split(" ")[0] ?? "Mateo";
+  const firstName = profile?.profile?.firstName ?? "Mateo";
 
   const groups = ORDER.map((category) => ({
     category,

@@ -1,3 +1,4 @@
+import { QueryClientProvider } from "@tanstack/react-query";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect, useState } from "react";
 import { Appearance } from "react-native";
@@ -5,6 +6,7 @@ import { Appearance } from "react-native";
 import { AppSplash } from "@/components/app-splash";
 import { storageKeys } from "@/constants";
 import { loadSavedLanguage } from "@/lib/i18n";
+import { queryClient } from "@/lib/query-client";
 import { storage } from "@/lib/storage";
 import { ThemeProvider, type ColorScheme } from "@/theme";
 
@@ -53,11 +55,13 @@ export function AppProviders({ children }: { children: React.ReactNode }) {
   if (!boot) return null; // el splash nativo sigue en pantalla
 
   return (
-    <ThemeProvider initialPreference={boot.themePreference}>
-      <AuthProvider initialSession={boot.session}>
-        {children}
-        <AppSplash />
-      </AuthProvider>
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider initialPreference={boot.themePreference}>
+        <AuthProvider initialSession={boot.session}>
+          {children}
+          <AppSplash />
+        </AuthProvider>
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 }

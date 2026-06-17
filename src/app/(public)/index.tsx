@@ -1,6 +1,7 @@
 import { router } from "expo-router";
 import { useTranslation } from "react-i18next";
 import {
+  Alert,
   KeyboardAvoidingView,
   Platform,
   Pressable,
@@ -11,15 +12,21 @@ import {
 } from "react-native";
 
 import { SignInForm, type SignInValues } from "@/features/sign-in";
+import { useAuth } from "@/providers";
 import { fonts, useTheme } from "@/theme";
 
 const SignIn = () => {
   const { colors } = useTheme();
   const { t } = useTranslation();
+  const { login } = useAuth();
 
   const handleSubmit = async (values: SignInValues) => {
-    // TODO: llamar al backend (axios) y guardar la sesión con useAuth().signIn(...)
-    console.log("sign-in", values);
+    // Al loguear, la sesión cambia y el guard de _layout redirige a (auth).
+    try {
+      await login(values.email, values.password);
+    } catch (e) {
+      Alert.alert(t("errors.title"), e instanceof Error ? e.message : t("errors.generic"));
+    }
   };
 
   return (

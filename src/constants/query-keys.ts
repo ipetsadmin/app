@@ -16,8 +16,20 @@ export const queryKeys = {
     list: (filters?: Record<string, unknown>) => ["pets", "list", filters ?? {}] as const,
     detail: (id: string) => ["pets", "detail", id] as const,
   },
+  treatments: {
+    all: (petId: string) => ["pets", "detail", petId, "treatments"] as const,
+    detail: (petId: string, treatmentId: string) =>
+      ["pets", "detail", petId, "treatments", treatmentId] as const,
+  },
   profile: {
     all: ["profile"] as const,
     detail: (id: string) => ["profile", "detail", id] as const,
+  },
+  agenda: {
+    all: ["agenda"] as const,
+    list: (days?: number) => ["agenda", days ?? null] as const,
+  },
+  tip: {
+    current: ["tip", "current"] as const,
   },
 } as const;

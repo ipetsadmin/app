@@ -3,13 +3,13 @@ import { StatusBar } from "expo-status-bar";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import "@/lib/i18n";
-import { AppProviders } from "@/providers";
+import { AppProviders, useAuth } from "@/providers";
 import { useTheme } from "@/theme";
 
 const RootStack = () => {
   const { colors, isDark } = useTheme();
 
-  const isAuthenticated = false;
+  const { isAuthenticated } = useAuth();
 
   const { top } = useSafeAreaInsets();
 

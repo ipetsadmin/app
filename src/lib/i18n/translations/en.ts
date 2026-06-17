@@ -8,6 +8,10 @@ export const en: typeof es = {
     noAccount: "Don't have an account?",
     createAccount: "Create account",
   },
+  errors: {
+    title: "Something went wrong",
+    generic: "An error occurred. Please try again.",
+  },
   forgotPassword: {
     overline: "Recovery",
     title: "RESET",

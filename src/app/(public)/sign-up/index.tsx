@@ -1,17 +1,25 @@
 import { useTranslation } from "react-i18next";
-import { StyleSheet, Text } from "react-native";
+import { Alert, StyleSheet, Text } from "react-native";
 
 import { AuthHeader, KeyboardScreen } from "@/components/ui";
 import { RegisterForm, type RegisterValues } from "@/features/register";
+import { useAuth } from "@/providers";
 import { useTheme } from "@/theme";
 
 const SignUp = () => {
   const { colors } = useTheme();
   const { t } = useTranslation();
+  const { register } = useAuth();
 
   const handleSubmit = async (values: RegisterValues) => {
-    // TODO: llamar al backend (axios) y guardar la sesión con useAuth().signIn(...)
-    console.log("register", values);
+    // El endpoint de registro solo recibe email/contraseña; firstName/lastName
+    // se guardarán luego vía perfil (useUpdateProfile). register() devuelve sesión,
+    // así que el guard de _layout redirige a (auth) al completarse.
+    try {
+      await register(values.email, values.password);
+    } catch (e) {
+      Alert.alert(t("errors.title"), e instanceof Error ? e.message : t("errors.generic"));
+    }
   };
 
   return (

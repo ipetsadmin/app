@@ -17,6 +17,11 @@ export const mutationKeys = {
     update: (id: string) => ["pets", "update", id] as const,
     remove: (id: string) => ["pets", "remove", id] as const,
   },
+  treatments: {
+    create: (petId: string) => ["pets", petId, "treatments", "create"] as const,
+    patchStatus: (petId: string, treatmentId: string) =>
+      ["pets", petId, "treatments", treatmentId, "status"] as const,
+  },
   profile: {
     update: ["profile", "update"] as const,
   },
