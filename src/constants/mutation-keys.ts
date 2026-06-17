@@ -11,6 +11,7 @@ export const mutationKeys = {
     signUp: ["auth", "sign-up"] as const,
     signOut: ["auth", "sign-out"] as const,
     forgotPassword: ["auth", "forgot-password"] as const,
+    verifyEmail: ["auth", "verify-email"] as const,
   },
   pets: {
     create: ["pets", "create"] as const,

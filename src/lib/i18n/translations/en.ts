@@ -24,6 +24,12 @@ export const en: typeof es = {
     subtitle: "Create your account to start managing your pets' health.",
     submit: "Create account",
   },
+  verifyEmail: {
+    overline: "Verification",
+    title: "CONFIRM",
+    subtitle: "Enter the 6-digit code we sent to your email.",
+    submit: "Verify",
+  },
   fields: {
     firstName: { label: "First name", placeholder: "Your first name" },
     lastName: { label: "Last name", placeholder: "Your last name" },
@@ -37,6 +43,7 @@ export const en: typeof es = {
     emailInvalid: "Invalid email",
     passwordRequired: "Password is required",
     passwordMin: "Minimum 8 characters",
+    codeLength: "The code must be 6 digits",
   },
   profile: {
     title: "Profile",

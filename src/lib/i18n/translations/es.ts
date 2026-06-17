@@ -23,6 +23,12 @@ export const es = {
     subtitle: "Creá tu cuenta para empezar a gestionar la salud de tus mascotas.",
     submit: "Crear cuenta",
   },
+  verifyEmail: {
+    overline: "Verificación",
+    title: "CONFIRMAR",
+    subtitle: "Ingresá el código de 6 dígitos que enviamos a tu correo.",
+    submit: "Verificar",
+  },
   fields: {
     firstName: { label: "Nombre", placeholder: "Tu nombre" },
     lastName: { label: "Apellido", placeholder: "Tu apellido" },
@@ -36,6 +42,7 @@ export const es = {
     emailInvalid: "Email inválido",
     passwordRequired: "La contraseña es obligatoria",
     passwordMin: "Mínimo 8 caracteres",
+    codeLength: "El código debe tener 6 dígitos",
   },
   profile: {
     title: "Perfil",
